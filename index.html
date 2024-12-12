@@ -10,31 +10,36 @@
         body {
             min-height: 100vh;
             width: 100%;
-            overflow: hidden; /* Prevent scrolling */
         }
 
         model-viewer {
             width: 100%;
-            height: 100vh;
+            height: 100vh; /* Changed to full viewport height */
             margin: 0 auto;
             background-color: #f5f5f5;
             --poster-color: transparent;
+        }
+
+        @media only screen and (max-width: 768px) {
+            model-viewer {
+                height: 100vh; /* Ensure full height on mobile */
+                width: 100%;
+            }
         }
 
         #ar-button {
             background-color: white;
             border-radius: 4px;
             border: none;
-            position: fixed; /* Changed to fixed */
-            bottom: 20px; /* Increased distance from bottom */
-            right: 20px;
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
             padding: 12px 24px;
             color: black;
             font-weight: 500;
-            font-size: 14px;
+            font-size: 14px; /* Slightly smaller font for mobile */
             cursor: pointer;
-            z-index: 100;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.25); /* Added shadow for better visibility */
+            z-index: 2;
         }
 
         .progress-bar {
@@ -58,39 +63,18 @@
         }
 
         #ar-prompt {
-            position: fixed; /* Changed to fixed */
+            position: absolute;
             left: 50%;
-            bottom: 80px; /* Moved up to not block the view */
+            bottom: 175px;
             transform: translateX(-50%);
             text-align: center;
             width: 80%;
             max-width: 400px;
-            z-index: 99;
-            pointer-events: none; /* Allow interaction with model through the prompt */
-        }
-
-        #ar-prompt img {
-            max-width: 100%;
-            opacity: 0.8; /* Made slightly transparent */
+            z-index: 1;
         }
 
         .hide {
             display: none;
-        }
-
-        /* Mobile-specific adjustments */
-        @media only screen and (max-width: 768px) {
-            #ar-button {
-                bottom: 10px;
-                right: 10px;
-                padding: 8px 16px; /* Slightly smaller padding */
-                font-size: 13px;
-            }
-
-            #ar-prompt {
-                bottom: 60px;
-                width: 70%; /* Smaller width on mobile */
-            }
         }
     </style>
 </head>
