@@ -1,3 +1,62 @@
+<head>
+    <style>
+        model-viewer {
+            width: 100%;
+            height: 80vh;
+            background-color: #f5f5f5;
+        }
+
+        #ar-button {
+            background-color: white;
+            border-radius: 4px;
+            border: none;
+            position: absolute;
+            bottom: 16px;
+            right: 16px;
+            padding: 12px 24px;
+            color: black;
+            font-weight: 500;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        .progress-bar {
+            display: block;
+            width: 33%;
+            height: 10px;
+            max-width: 100%;
+            margin: 0 auto;
+            border: 1px solid #4CAF50;
+            border-radius: 5px;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+
+        .update-bar {
+            background-color: #4CAF50;
+            height: 100%;
+            border-radius: 5px;
+            transition: width 0.3s;
+        }
+
+        #ar-prompt {
+            position: absolute;
+            left: 50%;
+            bottom: 175px;
+            transform: translateX(-50%);
+            text-align: center;
+            width: 80%;
+            max-width: 400px;
+            z-index: 1;
+        }
+
+        .hide {
+            display: none;
+        }
+    </style>
+</head>
 <body>
     <model-viewer 
         src="mandoline.gltf" 
@@ -12,7 +71,7 @@
         ar-status="not-presenting">
         
         <div class="progress-bar hide" slot="progress-bar">
-            <div class="update-bar" style="width: 100%;"></div>
+            <div class="update-bar"></div>
         </div>
         
         <button slot="ar-button" id="ar-button">
